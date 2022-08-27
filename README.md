@@ -1,4 +1,4 @@
-# <center>**Imersão Full Cycle - Codelivery**</center>
+# <center>**Imersão Full Cycle - CodeDelivery**</center>
 
 **Importante**: A aplicação do Apache Kafka deve estar rodando primeiro.
 
