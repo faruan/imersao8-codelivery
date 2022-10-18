@@ -4,7 +4,7 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     networks:
-      - mongo-network
+      - broker-kafka
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
     extra_hosts:
@@ -12,10 +12,10 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
+     networks: 
+      - broker-kafka
     depends_on:
       - zookeeper
-    networks:
-      - mongo-network
     ports:
       - '9092:9092'
       - '9094:9094'
@@ -23,7 +23,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_INTER_BROKER_LISTENER_NAME: OUTSIDE
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_LISTENERS: INTERNAL://:9092,OUTSIDE://:9094
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,OUTSIDE://host.docker.internal:9094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
@@ -32,8 +32,8 @@ services:
 
   kafka-topics-generator:
     image: confluentinc/cp-kafka:latest
-    networks:
-      - mongo-network
+    networks: 
+      - broker-kafka
     depends_on:
       - kafka
     command: >
@@ -45,8 +45,8 @@ services:
   control-center:
     image: confluentinc/cp-enterprise-control-center:6.0.1
     hostname: control-center
-    networks:
-      - mongo-network
+    networks: 
+      - broker-kafka
     depends_on:
       - kafka
     ports:
@@ -59,6 +59,6 @@ services:
     extra_hosts:
       - 'host.docker.internal:172.17.0.1'
 
-networks:
-  mongo-network:
+networks: 
+  broker-kafka:
     driver: bridge
