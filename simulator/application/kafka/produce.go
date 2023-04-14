@@ -2,12 +2,13 @@ package kafka
 
 import (
 	"encoding/json"
-	route2 "github.com/faruan/fullcycle-simulator/application/route"
-	"github.com/faruan/fullcycle-simulator/infra/kafka"
-	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	"log"
 	"os"
 	"time"
+
+	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+	route2 "github.com/faruan/imersao8-codelivery/simulator/application/route"
+	"github.com/faruan/imersao8-codelivery/simulator/infra/kafka"
 )
 
 // Produce is responsible to publish the positions of each request

@@ -1,4 +1,4 @@
-module github.com/faruan/fullcycle-simulator
+module github.com/faruan/imersao8-codelivery/simulator
 
 go 1.16
 

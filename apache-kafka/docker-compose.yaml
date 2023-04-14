@@ -12,7 +12,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
-     networks: 
+    networks: 
       - broker-kafka
     depends_on:
       - zookeeper

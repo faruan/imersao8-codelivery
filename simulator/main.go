@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	kafka2 "github.com/faruan/fullcycle-simulator/application/kafka"
-	"github.com/faruan/fullcycle-simulator/infra/kafka"
-	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
-	"github.com/joho/godotenv"
 	"log"
+
+	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+	kafka2 "github.com/faruan/imersao8-codelivery/simulator/application/kafka"
+	"github.com/faruan/imersao8-codelivery/simulator/infra/kafka"
+	"github.com/joho/godotenv"
 )
 
 func init() {
